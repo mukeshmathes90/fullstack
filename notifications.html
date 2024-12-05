@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - E-Portal for Case Management</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* General body styles */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Black background */
+            cursor: url('https://cdn.jsdelivr.net/gh/robinzhao97/cursor-glow/neon-cursor.png'), auto; /* Neon cursor */
+        }
+
+        /* Header styles */
+        header {
+            background: #007bff;
+            padding: 10px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            padding: 0;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        header nav ul li a.active {
+            text-shadow: 0 0 8px #00ccff, 0 0 12px #00ccff;
+        }
+
+        /* Main content styles */
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: #000; /* Black background outside the box */
+        }
+
+        /* Section styles */
+        .section {
+            background: #fff;
+            padding: 40px; /* Increased padding for larger box */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px; /* Increased max-width for larger box */
+        }
+
+        .section h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .section h2 {
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section ul li {
+            background: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-left: 5px solid #007bff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 1em;
+            color: #000; /* Change text color to black */
+        }
+
+        .notification-sent {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #007bff;
+            text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: blinkCursor 1s step-start infinite;
+        }
+
+        .notification-sent::before {
+            content: '✔';
+            color: green;
+            font-size: 1.5em;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+        }
+
+        /* Neon cursor blinking animation */
+        @keyframes blinkCursor {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="case_management.html">Case Management</a></li>
+                <li><a href="hearing_schedule.html">Hearing Schedule</a></li>
+                <li><a href="notifications.html" class="active">Notifications</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="section">
+            <h1>INTIMATION</h1>
+            <h2>Email Notifications</h2>
+            <ul>
+                <li>Intimation of cases will be provided promptly to keep all parties informed.</li>
+                <li>Reminders before hearing dates to ensure readiness and reduce missed appointments.</li>
+                <li>Real-time updates on any changes in schedules, enhancing communication and efficiency.</li>
+            </ul>
+            <div class="notification-sent">Notification sent successfully</div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 E-Portal for Case Management. All rights reserved.</p>
+    </footer>
+</body>
+</html>

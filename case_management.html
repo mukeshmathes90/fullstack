@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Management - E-Portal for Case Management</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Basic styling for case management */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #343a40;
+            padding: 15px 20px;
+            color: #fff;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        header nav ul li a.active {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 40px 20px;
+        }
+
+        .section {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group label {
+            flex: 0 0 150px; /* Fixed width for labels */
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            flex: 1; /* Input fields take remaining space */
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 15px 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="case_management.html" class="active">Case Management</a></li>
+                <li><a href="hearing_schedule.html">Hearing Schedule</a></li>
+                <li><a href="notifications.html">Notifications</a></li>
+                <li><button id="logoutBtn" class="logout-btn">Logout</button></li>
+            </ul>
+        </nav>
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        <script>
+            (function() {
+                emailjs.init("saFpBldHJP6cj6Uo7"); // Replace with your EmailJS user ID
+            })();
+        </script>
+    </header>
+    <main>
+        <section class="section">
+            <h1>Case Management</h1>
+            <form id="caseForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject of the Case:</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description of the Case:</label>
+                    <textarea id="description" name="description" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="courtName">Court Name:</label>
+                    <input type="text" id="courtName" name="courtName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lawyerName">Lawyer Name:</label>
+                    <input type="text" id="lawyerName" name="lawyerName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dateToProceed">Date to Proceed:</label>
+                    <input type="date" id="dateToProceed" name="dateToProceed" required>
+                </div>
+                                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+
+                <button type="submit">Submit Case</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 E-Portal for Case Management. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript code -->
+    <script>
+        document.getElementById('caseForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+
+            const token = localStorage.getItem('token');
+
+            // Fetch call to save the case data in your backend
+            try {
+                const response = await fetch('/api/cases', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Case submitted successfully!');
+
+                    // Sending the email notification to the user using EmailJS
+                    emailjs.send('service_f5d9tqh', 'template_r6m075b', {
+                        to_name: data.name,
+                        to_email: data.email, // Ensure this is correctly captured or adapt to your needs
+                        from_name: 'E-Portal for Case Management',
+                        subject: data.subject,
+                        description: data.description,
+                        courtName: data.courtName,
+                        lawyerName: data.lawyerName,
+                        dateToProceed: data.dateToProceed,
+                        email: data.email
+                    }).then((emailResponse) => {
+                        alert('Details have been emailed to you successfully!');
+                        console.log('Email sent:', emailResponse);
+                    }).catch((emailError) => {
+                        console.error('Failed to send email:', emailError);
+                        alert('Failed to send email notification.');
+                    });
+
+                    window.location.href = 'hearing_schedule.html';
+                } else {
+                    alert(`Failed to submit case. ${result.message || 'An unknown error occurred.'}`);
+                }
+            } catch (error) {
+                console.error('Error submitting case:', error);
+                alert('An error occurred. Please try again later.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,580 @@
+/* Basic styling for homepage */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    margin: 0;
+    padding: 0;
+    color: #f4f4f4;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    cursor: none; /* Hide default cursor */
+}
+
+/* Neon Cursor Styles */
+/* Neon Cursor Styles */
+/* Neon Cursor Styles */
+.neon-cursor {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 255, 255, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    transition: transform 0.1s ease-out;
+    transform: translate(-50%, -50%); /* Center the cursor */
+    z-index: 1000;
+    animation: glitter 1.5s infinite; /* Apply glitter animation */
+}
+
+/* Define the glitter animation */
+@keyframes glitter {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(0, 255, 255, 1);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    }
+}
+
+
+/* Blinking effect for the heading */
+@keyframes blink-blue {
+    0% {
+        opacity: 1;
+        color: #00ccff; /* Blue color for blinking effect */
+    }
+    50% {
+        opacity: 0;
+        color: #00ccff; /* Blue color for blinking effect */
+    }
+    100% {
+        opacity: 1;
+        color: #00ccff; /* Blue color for blinking effect */
+    }
+}
+
+/* Blinking effect for the paragraph */
+@keyframes blink-white {
+    0% {
+        opacity: 1;
+        color: #fff; /* White color for blinking effect */
+    }
+    50% {
+        opacity: 0;
+        color: #fff; /* White color for blinking effect */
+    }
+    100% {
+        opacity: 1;
+        color: #fff; /* White color for blinking effect */
+    }
+}
+/* Glitter animation */
+/* Glitter animation with reduced intensity */
+@keyframes glitter {
+    0% {
+        text-shadow: 0 0 2px #00ccff, 0 0 4px #00ccff, 0 0 6px #00ccff;
+    }
+    50% {
+        text-shadow: 0 0 2px #00ccff, 0 0 5px #00ccff, 0 0 6px #00ccff;
+    }
+    100% {
+        text-shadow: 0 0 2px #00ccff, 0 0 4px #00ccff, 0 0 6px #00ccff;
+    }
+}
+
+
+/* Apply glitter animation to headings */
+h1, h2, h3 {
+    color: #00ccff; /* Set text color */
+    animation: glitter 10s infinite; /* Apply glitter animation */
+    text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 15px #00ccff, 0 0 20px #00ccff, 0 0 25px #00ccff;
+}
+/* Ensure paragraphs inside headings are left-aligned */
+section p {
+    text-align: left;
+    margin: 0; /* Reset margin if needed */
+}
+
+
+/* Header and Navigation Styles */
+header {
+    background: #1f1f1f;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #f4f4f4;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #00ccff;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #00ccff;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Main Section */
+main {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center; /* Center-align text in main section */
+}
+
+/* Hero Section Styling */
+.hero {
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+/* Apply blinking animation to heading */
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px #00ccff; /* Optional: glow effect */
+    animation: blink-blue 2.5s infinite; /* Apply blue blinking animation */
+}
+
+/* Apply blinking animation to paragraph */
+.hero p {
+    font-size: 1.5em;
+    margin: 0;
+    text-shadow: 0 0 10px #fff; /* Optional: glow effect */
+    animation: blink-white 2.5s infinite; /* Apply white blinking animation */
+}
+
+/* Section Styles */
+.section {
+    background: #1f1f1f;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
+}
+
+.section h1 {
+    color: #00ccff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00ccff;
+}
+
+/* Button Styles */
+button {
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(45deg, #00ccff, #1e90ff);
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 204, 255, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(45deg, #1e90ff, #00ccff);
+    box-shadow: 0 6px 20px rgba(0, 204, 255, 0.5);
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: #1f1f1f;
+    color: #f4f4f4;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Calendar Styles */
+.calendar {
+    width: 300px;
+    margin: 20px auto;
+    border: 2px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background: #000;
+}
+
+.calendar-header {
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    font-size: 1.2em;
+    text-align: center;
+    border-bottom: 2px solid #333;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #111;
+    color: #fff;
+}
+
+.calendar-days .day {
+    padding: 10px;
+    font-weight: bold;
+    background: #333;
+    border-right: 1px solid #444;
+    border-bottom: 1px solid #444;
+}
+
+.calendar-days .day:nth-child(7n) {
+    border-right: none;
+}
+
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-body .date {
+    padding: 10px;
+    border: 1px solid #444;
+    margin: 1px;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+    text-align: center;
+}
+
+.calendar-body .date:hover {
+    background: #444;
+}
+
+/* Notifications Styles */
+.notifications ul {
+    list-style: none;
+    padding: 0;
+}
+
+.notifications li {
+    background: #f4f4f4;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+/* Existing styles... */
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    gap: 20px; /* Space between form elements */
+}
+
+/* Input and Textarea Styles */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%; /* Full width of the form container */
+    padding: 15px;
+    font-size: 1.2em; /* Increase text size */
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+textarea {
+    height: 150px; /* Increase height of the textarea */
+    resize: vertical; /* Allow resizing only vertically */
+}
+
+/* Button Styles */
+button {
+    margin-top: 20px;
+    padding: 15px 20px; /* Larger padding for the button */
+    font-size: 1.2em; /* Increase font size */
+}
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    header {
+        background-color: #343a40;
+        padding: 15px 20px;
+        color: #fff;
+    }
+
+    header nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+    }
+
+    header nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    header nav ul li a.active {
+        text-decoration: underline;
+    }
+
+    main {
+        padding: 40px 20px;
+        min-height: calc(100vh - 80px - 50px); /* Adjust for header and footer heights */
+    }
+
+    .section {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 100px; /* Add space below the form */
+    }
+
+    .form-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: #333;
+        width: 200px; /* Adjust as needed */
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="date"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        flex: 1;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        font-size: 1em;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1em;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    footer {
+        background-color: #343a40;
+        color: #fff;
+        text-align: center;
+        padding: 30px 20px; /* Increased padding */
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+/* List item styles */
+.section ul li {
+    background: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid #007bff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    color: #000; /* Change text color to black */
+}
+/* General body styles */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Black background */
+    cursor: url('https://cdn.jsdelivr.net/gh/robinzhao97/cursor-glow/neon-cursor.png'), auto; /* Neon cursor */
+}
+
+/* Header styles */
+header {
+    background: #007bff;
+    padding: 10px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    padding: 0;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+header nav ul li a.active {
+    text-shadow: 0 0 8px #00ccff, 0 0 12px #00ccff;
+}
+
+/* Main content styles */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #000; /* Black background outside the box */
+}
+
+/* Section styles */
+.section {
+    background: #fff;
+    padding: 40px; /* Increased padding for larger box */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px; /* Increased max-width for larger box */
+}
+
+/* Centered title */
+.section h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.section h2 {
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+/* List styles */
+.section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.section ul li {
+    background: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid #007bff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    color: #000; /* Change text color to black */
+    text-align: left; /* Align text to the left */
+}
+
+/* Notification sent styles */
+.notification-sent {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #007bff;
+    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: blinkCursor 1s step-start infinite;
+}
+
+.notification-sent::before {
+    content: '✔';
+    color: green;
+    font-size: 1.5em;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    color: #fff;
+}
+
+/* Neon cursor blinking animation */
+@keyframes blinkCursor {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+

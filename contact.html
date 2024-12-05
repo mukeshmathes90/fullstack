@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - E-Portal for Case Management</title>
+    <style>
+        /*    <link rel="stylesheet" href="css/styles.css">
+ Basic styling for the entire page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            padding: 15px 20px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+        }
+
+        header nav ul li a.active {
+            border-bottom: 2px solid #00ffcc;
+        }
+
+        /* Main section styling */
+        .section {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #1a1a1a;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
+        }
+
+        h1 {
+            text-align: center;
+            color: #00ffcc;
+            margin-bottom: 30px;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-size: 1.2em;
+            color: #00ffcc;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1em;
+            background-color: #333;
+            color: #00ffcc;
+            box-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
+        }
+
+        textarea {
+            min-height: 150px;
+        }
+
+        button[type="submit"] {
+            padding: 15px;
+            background-color: #00ffcc;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #00e6b8;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 15px 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Neon cursor effect */
+        body {
+            cursor: none;
+        }
+
+        #neon-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #00ffcc;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 15px #00ffcc, 0 0 25px #00ffcc, 0 0 35px #00ffcc;
+            z-index: 1000;
+            transition: transform 0.15s ease-out;
+        }
+
+        /* Extra styling for the input focus */
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 1);
+        }
+    </style>
+</head>
+<body>
+    <div id="neon-cursor"></div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html" class="active">Contact Us</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Signup</a></li>
+            </ul>
+        </nav>
+
+        <!-- EmailJS Script -->
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        <script>
+            // Initialize EmailJS
+            (function() {
+                emailjs.init("W106Xa39mUPj8KBZ7"); // Replace with your public key
+            })();
+        </script>
+    </header>
+
+    <main>
+        <section class="section">
+            <h1>Contact Us</h1>
+            <form id="contactForm" class="form" onsubmit="handleContactForm(event)">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required placeholder="Enter your message"></textarea>
+
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 E-Portal for Case Management. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Example JavaScript function for form submission handling
+        function handleContactForm(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Send email using EmailJS
+            emailjs.send('service_1m6thfa', 'template_p1c3yd8', {
+                from_name: name,
+                from_email: email,
+                message: message
+            }).then((response) => {
+                alert('Message sent successfully!');
+                console.log('Success!', response.status, response.text);
+
+                // Reset form fields after submission
+                document.getElementById('contactForm').reset();
+            }).catch((error) => {
+                alert('Failed to send the message. Please try again.');
+                console.error('Failed to send email:', error);
+            });
+        }
+
+        // Neon cursor effect
+        const cursor = document.getElementById('neon-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+        });
+    </script>
+</body>
+</html>

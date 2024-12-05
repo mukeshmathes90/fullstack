@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - E-Portal for Case Management</title>
+    <style>
+        /* Basic styling for homepage */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            margin: 0;
+            padding: 0;
+            color: #f4f4f4;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            cursor: none; /* Hide default cursor */
+        }
+
+        /* Neon Cursor Styles */
+        .neon-cursor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 255, 255, 0.7);
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+            transition: transform 0.1s ease-out;
+            transform: translate(-50%, -50%); /* Center the cursor */
+            z-index: 1000;
+            animation: glitter 1.5s infinite; /* Apply glitter animation */
+        }
+
+        /* Define the glitter animation */
+        @keyframes glitter {
+            0% {
+                box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 15px rgba(0, 255, 255, 1);
+            }
+            100% {
+                box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+            }
+        }
+
+        /* Header and Navigation Styles */
+        header {
+            background: #1f1f1f;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #f4f4f4;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00ccff;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: #00ccff;
+            bottom: 0;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Main Section */
+        main {
+            padding: 40px 20px;
+            max-width: 1200px; /* Increased width */
+            margin: 0 auto;
+            text-align: left; /* Align text to the left */
+        }
+
+        /* Apply blinking animation to heading */
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px #00ccff; /* Optional: glow effect */
+            animation: blink-blue 2.5s infinite; /* Apply blue blinking animation */
+        }
+
+        /* Apply blinking animation to paragraph */
+        .hero p {
+            font-size: 1.5em;
+            margin: 0;
+            text-shadow: 0 0 10px #fff; /* Optional: glow effect */
+            animation: blink-white 2.5s infinite; /* Apply white blinking animation */
+        }
+
+        /* Section Styles */
+        .section {
+            background: #1f1f1f;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+        }
+
+        /* About Section Styling */
+        .about-section {
+            background: #fff; /* White background for about section */
+            color: #000; /* Black text color */
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 1000px; /* Increased width */
+            margin: 0 auto;
+        }
+
+        .about-section h1, .about-section h2 {
+            color: #00ccff; /* Neon blue color for headings */
+        }
+
+        .about-section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: left; /* Align paragraphs to the left */
+        }
+
+        /* Button Styles */
+        button {
+            margin-top: 20px;
+            padding: 12px;
+            border: none;
+            background: linear-gradient(45deg, #00ccff, #1e90ff);
+            color: #fff;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 204, 255, 0.3);
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #1e90ff, #00ccff);
+            box-shadow: 0 6px 20px rgba(0, 204, 255, 0.5);
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #1f1f1f;
+            color: #f4f4f4;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Signup</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section about-section">
+            <h1>About Us</h1>
+            <p>We are committed to offering a cutting-edge platform designed to simplify and enhance the management of legal case hearings. Our focus is on creating a seamless and efficient system that enables legal professionals and clients to effortlessly schedule, track, and manage their cases, ultimately transforming how legal proceedings are handled.</p>
+            
+            <h2>Our Mission</h2>
+            <p>Our mission is to revolutionize the legal case management process by providing a streamlined, intuitive platform that reduces administrative burdens, enhances productivity, and delivers a seamless experience for legal professionals and their clients. We aim to ensure that all parties involved in case hearings are well-informed and prepared, from scheduling to final resolution.</p>
+
+            <h2>Our Vision</h2>
+            <p>Our vision is to lead the transformation of the legal industry by empowering users with a user-friendly, innovative platform that inspires confidence in managing legal cases. We envision a future where legal professionals can manage their caseloads with ease, and clients can access their case information with clarity, fostering a more efficient and transparent legal system.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 E-Portal for Case Management. All rights reserved.</p>
+    </footer>
+
+    <!-- Optional JavaScript for additional functionality -->
+    <script src="js/main.js"></script>
+    <!-- Include the Neon Cursor Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cursor = document.createElement('div');
+            cursor.classList.add('neon-cursor');
+            document.body.appendChild(cursor);
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = `${e.clientX}px`;
+                cursor.style.top = `${e.clientY}px`;
+            });
+        });
+    </script>
+</body>
+</html>
